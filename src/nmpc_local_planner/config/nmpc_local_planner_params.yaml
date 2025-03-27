@@ -1,0 +1,22 @@
+nmpcPlannerROS:
+  odom_topic: odom
+  robot:
+    acc_lim_x: 2.5
+    acc_lim_y: 2.0
+    xICR: 0.00248
+    
+  controller:
+    xy_goal_tolerance: 1.0
+    max_global_plan_lookahead_dist: 3.0 # Check horizon length
+    global_plan_prune_distance: 1.0
+    num_trajecotry_points: 20
+    weight_x:  20.0         # Weighting matrix for X-coordinate
+    weight_final_x: 2.0     # Weighting matrix for X-coordinate at final point
+    weight_y: 20.0    # Weighting matrix for Y-coordinate
+    weight_final_y: 5.0    # Weighting matrix for Y-coordinate at final point
+    weight_theta: 1.0         # Weighting factor for heading
+    weight_speed: 1.0   # Weighting matrix for velocity
+    weight_speed_ChangeRate: 1.0
+    weight_steering: 1.0   # Weighting matrix for steering angle
+    weight_steering_ChangeRate: 1.0
+

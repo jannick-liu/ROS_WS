@@ -1,0 +1,19 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~weight_x" : \b [double] Weight parameters for state x min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_y" : \b [double] Weight parameters for  state x min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_theta" : \b [double] Weight parameters for state theta min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_speed" : \b [double] Weight parameters for state speed min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_final_x" : \b [double] Weight parameters for final state x min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_final_y" : \b [double] Weight parameters for final state y min: 0.0, default: 1.0, max: 1000.0
+- \b "~weight_final_theta" : \b [double] Weight parameters for final state theta min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_final_speed" : \b [double] Weight parameters for final state speed min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_acc" : \b [double] Weight parameters for control acceleration min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_steer" : \b [double] Weight parameters for control steer min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_steer_acc" : \b [double] Weight parameters for control steer rate min: 0.0, default: 10.0, max: 1000.0
+- \b "~weight_left_side" : \b [double] Weight parameters for left sidewalk min: 0.0, default: 5.0, max: 1000.0
+- \b "~weight_right_side" : \b [double] Weight parameters for rightsidewalk min: 0.0, default: 5.0, max: 1000.0
+- \b "~weight_obs" : \b [double] Weight parameters for obstacles min: 0.0, default: 5.0, max: 1000.0
+

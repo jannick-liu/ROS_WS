@@ -1,0 +1,6 @@
+free_thresh: 0.2
+image: /home/hao/ros_ws/src/panther_simulation/maps/3_obs.pgm
+negate: 0
+occupied_thresh: 0.65
+origin: [-1, -4, 0]
+resolution: 0.05

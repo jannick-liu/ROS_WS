@@ -1,0 +1,24 @@
+\subsubsection usage Usage
+\verbatim
+<node name="geo_local_planner" pkg="geo_local_planner" type="geo_local_planner">
+  <param name="max_vel_x" type="double" value="0.3" />
+  <param name="max_vel_x_backwards" type="double" value="0.2" />
+  <param name="max_vel_theta" type="double" value="0.5" />
+  <param name="acc_lim_x" type="double" value="0.5" />
+  <param name="acc_lim_theta" type="double" value="0.52" />
+  <param name="min_turn_radius" type="double" value="0.5" />
+  <param name="turn_around_priority" type="bool" value="True" />
+  <param name="stop_dist" type="double" value="0.5" />
+  <param name="dec_dist" type="double" value="1.0" />
+  <param name="xy_goal_tolerance" type="double" value="1.0" />
+  <param name="yaw_goal_tolerance" type="double" value="0.1" />
+  <param name="max_local_plan_lookahead_dist" type="double" value="5.0" />
+  <param name="local_plan_viapoint_sep" type="double" value="0.5" />
+  <param name="local_plan_goal_sep" type="double" value="0.5" />
+  <param name="local_plan_prune_distance" type="double" value="1.0" />
+  <param name="k_rho" type="double" value="1.0" />
+  <param name="k_alpha" type="double" value="-3.0" />
+  <param name="k_phi" type="double" value="-1.0" />
+</node>
+\endverbatim
+

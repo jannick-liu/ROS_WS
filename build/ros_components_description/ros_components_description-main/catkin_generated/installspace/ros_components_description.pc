@@ -1,0 +1,8 @@
+prefix=/home/hao/ros_ws/install
+
+Name: ros_components_description
+Description: Description of ros_components_description
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

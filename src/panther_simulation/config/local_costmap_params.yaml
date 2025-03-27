@@ -1,0 +1,15 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_link
+  rolling_window: true
+
+
+
+  plugins:
+    # - {name: static_layer,            type: "costmap_2d::StaticLayer"}
+
+    - {name: obstacle_layer,          type: "costmap_2d::ObstacleLayer"} #NonPersistentVoxelLayer
+    - {name: inflation_layer,      type: "costmap_2d::InflationLayer"}
+    # - {name: obstacle_detection_layer,      type: "obstacle_detection_layer::ObstacleDetectionLayer"}
+
+

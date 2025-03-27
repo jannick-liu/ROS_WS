@@ -1,0 +1,7 @@
+<library path="lib/libnmpc_local_planner">
+  <class name="nmpc_local_planner/nmpcPlannerROS" type="nmpc_local_planner::NmpcPlannerROS" base_class_type="nav_core::BaseLocalPlanner">
+    <description>
+      A implementation of a local planner using either a nmpc approach based on configuration parameters.
+    </description>
+  </class>
+</library>

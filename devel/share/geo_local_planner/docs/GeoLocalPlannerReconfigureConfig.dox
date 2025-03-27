@@ -1,0 +1,23 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~max_vel_x" : \b [double] Maximum velocity in the x direction of the robot min: 0.01, default: 0.3, max: 100.0
+- \b "~max_vel_x_backwards" : \b [double] Maximum translational velocity of the robot for driving backwards min: 0.01, default: 0.2, max: 100.0
+- \b "~max_vel_theta" : \b [double] Maximum angular velocity of the robot min: 0.01, default: 0.5, max: 100.0
+- \b "~acc_lim_x" : \b [double] Maximum translational acceleration of the robot min: 0.01, default: 0.5, max: 100.0
+- \b "~acc_lim_theta" : \b [double] Maximum angular acceleration of the robot min: 0.01, default: 0.52, max: 100.0
+- \b "~min_turn_radius" : \b [double] Minimum turning radius of the robot min: 0.1, default: 0.5, max: 100.0
+- \b "~turn_around_priority" : \b [bool] If true, the robot preferentially adjusts the orientation to fit the direction of the path min: False, default: True, max: True
+- \b "~stop_dist" : \b [double] When the Euclidean distance between the nearest lethal point on planned path and the robot frame origin is less than this distance, the robot stops min: 0.01, default: 0.5, max: 100.0
+- \b "~dec_dist" : \b [double] When the Euclidean distance between the nearest lethal point on planned path and the robot frame origin is less than this distance, the robot slows down min: 0.01, default: 1.0, max: 100.0
+- \b "~xy_goal_tolerance" : \b [double] Allowed final euclidean distance to the goal position min: 0.001, default: 1.0, max: 10.0
+- \b "~yaw_goal_tolerance" : \b [double] Allowed final orientation error to the goal orientation min: 0.001, default: 0.1, max: 3.2
+- \b "~max_local_plan_lookahead_dist" : \b [double] Specify maximum length (cumulative Euclidean distances) of the subset of the global plan taken into account for optimization [if 0 or negative: disabled; the length is also bounded by the local costmap size] min: 0.0, default: 5.0, max: 50.0
+- \b "~local_plan_viapoint_sep" : \b [double] Min. separation between each two consecutive via-points extracted from the global plan [if negative: disabled] min: -0.1, default: 0.5, max: 10.0
+- \b "~local_plan_goal_sep" : \b [double] Min. separation between last via-points extracted from the global plan and goal min: -0.1, default: 0.5, max: 10.0
+- \b "~local_plan_prune_distance" : \b [double] Distance between robot and via_points of global plan which is used for pruning min: -0.1, default: 1.0, max: 10.0
+- \b "~k_rho" : \b [double] Proportional parameter for linear velocity adjustment based on the Euclidean distance of the robot position to the current target min: 0.0, default: 1.0, max: 10.0
+- \b "~k_alpha" : \b [double] Proportional parameter for angular velocity adjustment based on the tangential angle of the target position in the robot's frame of reference min: -10.0, default: -3.0, max: 10.0
+- \b "~k_phi" : \b [double] Proportional parameter for angular velocity adjustment based on the difference between the robot's orientation(yaw) and the current target orientation(yaw) min: -10.0, default: -1.0, max: 10.0
+

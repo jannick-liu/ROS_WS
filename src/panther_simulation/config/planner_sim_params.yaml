@@ -1,0 +1,171 @@
+controller_frequency: 5.0
+recovery_behavior_enabled: true
+planner_frequency: 0.0
+planner_patience: 10.0
+max_planning_retries: 1
+clearing_rotation_allowed: true
+
+
+GlobalPlanner:                      #Dijkstra
+  allow_unknown: true
+  default_tolerance: 0.0
+  visualize_potential: true
+  use_dijkstra: true
+  use_quadratic: true
+  use_grid_path: false
+  old_navfn_behavior: false
+# global planner parameter
+  lethal_cost: 253
+  neutral_cost: 66
+  cost_factor: 0.55
+  publish_potential: true
+
+
+#GlobalPlanner:
+#  allow_unknown: true
+#  default_tolerance: 0.0
+#  visualize_potential: true
+#  use_dijkstra: false          # 使用 A*，不要使用 Dijkstra
+#  use_quadratic: true          # 启用二次插值（如果需要）
+#  use_grid_path: true          # 启用网格路径
+#  old_navfn_behavior: false    # 禁用旧的 navfn 行为（如果不需要）
+  # global planner parameter
+#  lethal_cost: 253
+#  neutral_cost: 66
+#  cost_factor: 0.55
+#  publish_potential: true
+
+nmpcPlannerROS:
+  acc_lim_x: 0.15
+  acc_lim_y: 0.1
+  acc_lim_theta: 0.52
+  speed_lim: 0.5
+  steer_lim: 1.0
+  xICR: 0.00248
+  width: 0.5
+  
+  odom_topic: odom
+  global_plan_prune_distance: 1.0
+  xy_goal_tolerance: 1.0
+  max_global_plan_lookahead_dist: 5.0 # Check horizon length
+  seg_inflation_rate: 0.1
+  use_voronoi: true
+  obstacle_avoidance: true
+  check_feasibility: true
+  feasibility_window: 15
+  min_path_width: 3.0
+
+  weight_x:  20.0         # Weighting matrix for X-coordinate
+  weight_y: 20.0    # Weighting matrix for Y-coordinate
+  weight_theta: 0.0         # Weighting factor for heading
+  weight_speed: 10.0   # Weighting matrix for velocity
+  weight_final_x: 30.0     # Weighting matrix for X-coordinate at final point
+  weight_final_y: 10.0    # Weighting matrix for Y-coordinate at final point
+  weight_final_theta: 20.0
+  weight_final_speed: 10.0
+  weight_acc: 30.0
+  weight_steer: 10.0   # Weighting matrix for steering angle
+  weight_steer_acc: 10.0
+  weight_left_side: 10.0
+  weight_right_side: 10
+  weight_obs: 10
+  weight_y_obs: 0.1
+
+  num_trajecotry_points: 20
+  time_interval: 0.3
+
+  use_c_code: true
+  generate_c: false
+  use_irk: false
+  print_level: 0
+  collocation_points: 3.0
+  linear_solver: ma27
+  nlp_solver_name: nmpc_solver_whizzy_devel
+
+TrajectoryPlannerROS:
+  # Robot Configuration Parameters
+  acc_lim_x: 2.5
+  acc_lim_theta:  3.2
+
+  max_vel_x: 1.0
+  min_vel_x: 0.0
+
+  max_vel_theta: 0.2
+  min_vel_theta: -1.0
+  min_in_place_vel_theta: 0.2
+
+  holonomic_robot: false
+  escape_vel: -0.1
+
+  # Goal Tolerance Parameters
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.2
+  latch_xy_goal_tolerance: false
+
+  # Forward Simulation Parameters
+  sim_time: 20.0
+  sim_granularity: 0.02
+  angular_sim_granularity: 0.02
+  vx_samples: 10
+  vtheta_samples: 20
+  controller_frequency: 20.0
+
+  # Trajectory scoring parameters
+  meter_scoring: true # Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells. Cells are assumed by default (false).
+  occdist_scale:  0.1 #The weighting for how much the controller should attempt to avoid obstacles. default 0.01
+  path_distance_bias: 0.01  #     The weighting for how much the controller should stay close to the path it was given . default 0.6
+  goal_distance_bias: 1.0 #     The weighting for how much the controller should attempt to reach its local goal, also controls speed  default 0.8
+
+  heading_lookahead: 0.325  #How far to look ahead in meters when scoring different in-place-rotation trajectories
+  heading_scoring: false  #Whether to score based on the robot's heading to the path or its distance from the path. default false
+  heading_scoring_timestep: 0.8   #How far to look ahead in time in seconds along the simulated trajectory when using heading scoring (double, default: 0.8)
+  dwa: true #Whether to use the Dynamic Window Approach (DWA)_ or whether to use Trajectory Rollout
+  simple_attractor: false
+  publish_cost_grid_pc: true  
+  max_rotational_vel: 0.2
+  # Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.25 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
+  escape_reset_dist: 0.1
+  escape_reset_theta: 0.1
+
+
+
+DWAPlannerROS:
+  # 机器人运动限制
+  max_vel_trans: 0.5  # 最大平移速度
+  min_vel_trans: 0.0  # 最小平移速度
+  max_vel_x: 0.5  # 最大X方向速度
+  min_vel_x: 0.0  # 最小X方向速度
+  max_vel_y: 0.0  # DWA 不支持全向移动，一般设为 0
+  min_vel_y: 0.0
+  max_vel_theta: 1.0  # 最大角速度
+  min_vel_theta: 0.0
+  acc_lim_x: 0.15  # X方向加速度限制
+  acc_lim_y: 0.1  # Y方向加速度限制（一般设为 0）
+  acc_lim_theta: 0.52  # 角加速度限制
+
+  # 机器人尺寸
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerance: 0.1
+  sim_time: 1.7  # 预测时间
+  vx_samples: 3  # X方向速度采样
+  vtheta_samples: 20  # 角速度采样
+  path_distance_bias: 32.0  # 轨迹距离权重
+  goal_distance_bias: 24.0  # 目标距离权重
+  occdist_scale: 0.02  # 障碍物距离权重
+  stop_time_buffer: 0.2  # 停止缓冲时间
+
+
+TebLocalPlannerROS:
+  # 机器人运动限制
+  max_vel_x: 0.5  # 最大线速度（前进）
+  max_vel_x_backwards: 0.5  # 最大线速度（后退）
+  max_vel_theta: 1.0  # 最大角速度
+  acc_lim_x: 0.15  # X方向加速度限制
+  acc_lim_y: 0.1  # Y方向加速度限制（一般设为 0，因为差速驱动机器人不需要）
+  acc_lim_theta: 0.52  # 角加速度限制
+
+  # 轨迹优化
+  weight_kinematics_forward_drive: 1.0  # 促进向前行驶
+  weight_kinematics_turning_radius: 1.0  # 促进更平滑的转向半径
+  min_turning_radius: 0.00248  # 根据 xICR 设置（适用于非差速驱动机器人）
